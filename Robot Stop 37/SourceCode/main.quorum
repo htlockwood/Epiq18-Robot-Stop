@@ -4,6 +4,9 @@ use Libraries.Robots.Lego.Sound
 use Libraries.Robots.Lego.Button
 use Libraries.Robots.Lego.UltrasonicSensor
 use Libraries.System.File
+use Libraries.System.File
+use Libraries.Sound.Audio
+//use Libraries.Compute.Random
 
 
 //instantiate actions
@@ -12,6 +15,7 @@ Screen screen
 Sound sound
 Button button
 UltrasonicSensor ultrasonic
+//Random random
 File soundFile
 ultrasonic:SetPort(2) //Set the port
 
@@ -49,10 +53,8 @@ sound:PlayTone(55, 20)
 text distanceText=cast(text,ultrasonic:GetDistance())
 screen:OutputCenter(distanceText + " Dist",5)
 
-
-
 end
-//-=-=-=-=-=-=-= stop the 
+//-=-=-=-=-=-=-= stop the robot & turn around
 motor:Stop("B")
 motor:Stop("C")
 sound:PlayTone(880,1000)
@@ -62,8 +64,17 @@ motor:Wait("B")
 motor:Wait("C")
 sound:PlayTone(440,1000)
 //done
-
 soundFile:SetPath("COMPLETEDWAVE.wav")
 sound:PlayAudio(soundFile)
+//randomPitch=55
+//randomTime=500
+//
+//repeat until randomTime >800
+//
+//randomPitch=random:RandomIntegerBetween(110, 880)
+//randomTime=random:RandomIntegerBetween(250, 1000)
+//sound:PlayTone(randomPitch,randomTime)
 motor:RotateForward("B")
 motor:RotateForward("C")
+
+//end
