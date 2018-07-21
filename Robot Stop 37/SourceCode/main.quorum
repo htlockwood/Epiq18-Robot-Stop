@@ -65,4 +65,5 @@ sound:PlayTone(440,1000)
 
 soundFile:SetPath("COMPLETEDWAVE.wav")
 sound:PlayAudio(soundFile)
-
+motor:RotateForward("B")
+motor:RotateForward("C")
